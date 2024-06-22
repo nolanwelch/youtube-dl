@@ -339,6 +339,7 @@ from .dw import (
     DWIE,
     DWArticleIE,
 )
+from .dzenru import DzenRuIE
 from .eagleplatform import EaglePlatformIE
 from .ebaumsworld import EbaumsWorldIE
 from .echomsk import EchoMskIE
