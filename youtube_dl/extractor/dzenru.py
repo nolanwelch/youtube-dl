@@ -45,7 +45,26 @@ class DzenRuIE(InfoExtractor):
         # },
     ]
 
+    def _is_embed_url(self, url):
+        m = re.match(r"https?://(?:www\.)?dzen\.ru/embed/.*", url)
+        return m is not None
+
+    def _get_original_url(self, embed_url):
+        webpage = self._download_webpage(embed_url, -1)
+        obj = self._search_json(
+            r"<script\s[^>]*>\s*Dzen.player.init\s*(",
+            webpage,
+            "embed url data",
+            end_pattern=r"\s*)\s*;.*<\s*/\s*script\s*>",
+        )
+        return try_get(obj, lambda x: x["data"]["content"]["video_url"], compat_str)
+
     def _real_extract(self, url):
+        url = sanitize_url(url)
+        
+        if self._is_embed_url(url):
+            url = self._get_original_url(url)
+
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group("id")
         webpage = self._download_webpage(url, video_id)
