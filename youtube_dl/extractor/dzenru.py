@@ -69,23 +69,8 @@ class DzenRuIE(InfoExtractor):
         video_id = mobj.group("id")
         webpage = self._download_webpage(url, video_id)
 
-        microdata = self._search_json(
-            r'<script\s[^>]*?\bid\s*=\s*("|\')video-microdata\1[^>]*>',
-            webpage,
-            "video microdata",
-            video_id,
-            end_pattern="</script>",
-            default={},
-        )
 
-        # TODO: Test this regex
-        duration = self._html_search_regex(
-            r'<meta\s[^>]*\bproperty\s*=\s*("|\')video:duration\1\s[^>]*\bcontent="(?P<duration>.+)"\s[^>]*/>',
-            webpage,
-            "duration",
-            group="duration",
-            fatal=False,
-        )
+        microdata = self._parse_json(get_element_by_id("video-microdata", webpage)) or {}
 
         description = microdata.get("description")
         thumbnail = microdata.get("thumbnailUrl")
