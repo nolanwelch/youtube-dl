@@ -74,7 +74,7 @@ class DzenRuIE(InfoExtractor):
 
         description = microdata.get("description")
         thumbnail = microdata.get("thumbnailUrl")
-        timestamp = parse_iso8601(microdata.get("uploadDate"))
+        timestamp = unified_timestamp(microdata.get('uploadDate'))
         title = (
             microdata.get("name")
             or self._og_search_title(webpage).split("|")[0].strip()
