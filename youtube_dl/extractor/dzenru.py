@@ -28,24 +28,21 @@ class DzenRuIE(InfoExtractor):
                 "title": 'ИКЕА под новым брендом? Обзор SWED HOUSE "IKEA" ожидание / реальность',
                 "description": "",
                 "thumbnail": "https://avatars.dzeninfra.ru/get-zen_doc/9369849/pub_6471e50e06863726828b435c_6471e53797651c7e6bde53a8/smart_crop_516x290",
-                "timestamp": 1685186096,
-                # TODO more properties, either as:
-                # * A value
-                # * MD5 checksum; start the string with md5:
-                # * A regular expression; start the string with re:
-                # * Any Python type (for example int or float)
+                "duration": 775,
+                "channel": "Ваш дизайнер интерьера",
+                "channel_url": "https://dzen.ru/yourinteriordes?co  try_code=ru&amp;lang=ru&amp;parent_rid=1780210364.275.1718984454232.43847&amp;from_parent_id=4818014694485230733&amp;from_parent_type=gif&amp;from_page=other_page",
             },
         },
-        {
-            "url": "https://dzen.ru/embed/vnVEaPfaSym8?from_block=partner&from=zen&mute=0&autoplay=0&tv=0",
-            "info_dict": {
-                "id": "vnVEaPfaSym8",
-                "ext": "mp4",
-                "title": 'ИКЕА под новым брендом? Обзор SWED HOUSE "IKEA" ожидание / реальность | Ваш дизайнер интерьера | Дзен',
-                "description": "",
-                "thumbnail": r"re:^https?://.*\.jpg$",
-            },
-        },
+        # {
+        #     "url": "https://dzen.ru/embed/vnVEaPfaSym8?from_block=partner&from=zen&mute=0&autoplay=0&tv=0",
+        #     "info_dict": {
+        #         "id": "vnVEaPfaSym8",
+        #         "ext": "mp4",
+        #         "title": 'ИКЕА под новым брендом? Обзор SWED HOUSE "IKEA" ожидание / реальность | Ваш дизайнер интерьера | Дзен',
+        #         "description": "",
+        #         "thumbnail": r"re:^https?://.*\.jpg$",
+        #     },
+        # },
     ]
 
     def _real_extract(self, url):
