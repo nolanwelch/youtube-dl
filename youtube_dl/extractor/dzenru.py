@@ -104,12 +104,11 @@ class DzenRuIE(InfoExtractor):
             fatal=False,
         )
 
+        # TODO: Replace with traverse_obj function
         view_count = like_count = comment_count = None
-        for stat in microdata.get("interactionStatistic", []):
-            count = stat.get("userInteractionCount")
-            interaction_type = stat.get("interactionType")
-            if interaction_type is None:
-                continue
+        for stat in microdata.get("interactionStatistic") or [{}]:
+            count = parse_count(stat.get("userInteractionCount"))
+            interaction_type = stat.get("interactionType") or {}
             match interaction_type.get("@type"):
                 case "WatchAction":
                     view_count = count
