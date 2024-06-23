@@ -95,12 +95,12 @@ class DzenRuIE(InfoExtractor):
             or self._og_search_title(webpage).split("|")[0].strip()
         )
 
-        duration = self._html_search_meta(
+        duration = parse_duration(self._html_search_meta(
             "video:duration",
             webpage,
             "duration",
             default=None
-        ) or parse_duration(microdata.get('duration'))
+        )) or parse_duration(microdata.get('duration'))
 
         # TODO: Rewrite this regex to make it more generic
         channel_regex = r'<a\s[^>]*\bclass\s*=\s*"card-channel-link _is-link card-channel-info__link" aria-label="(?P<channel>.+)" href="(?P<channel_url>.+)" rel="dofollow" target="_blank"></a>'
