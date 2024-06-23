@@ -153,16 +153,16 @@ class DzenRuIE(InfoExtractor):
         # TODO: Parse comments from HTML
 
         return {
-            "id": video_id,
-            "title": title,
-            "description": description,
-            "thumbnail": thumbnail,
-            "release_timestamp": timestamp,
-            "view_count": view_count,
-            "like_count": like_count,
-            "comment_count": comment_count,
-            "duration": duration,
-            "channel": channel,
-            "channel_url": channel_url,
+            "id": str_or_none(video_id),
+            "title": str_or_none(title),
+            "description": str_or_none(description),
+            "thumbnail": url_or_none(thumbnail),
+            "release_timestamp": int_or_none(timestamp),
+            "view_count": int_or_none(view_count),
+            "like_count": int_or_none(like_count),
+            "comment_count": int_or_none(comment_count),
+            "duration": int_or_none(duration),
+            "channel": str_or_none(channel),
+            "channel_url": url_or_none(channel_url),
             "formats": formats,
         }
